@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مولد سياسة الخصوصية واتفاقية الاستخدام</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; direction: rtl; text-align: right; }
+        .container { max-width: 600px; margin: 50px auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; }
+        input, textarea { width: 100%; padding: 10px; margin: 10px 0; text-align: right; }
+        button { background: #28a745; color: #fff; padding: 10px 20px; border: none; cursor: pointer; }
+        button:hover { background: #218838; }
+        .copy-btn { margin-top: 10px; background: #007bff; }
+        .copy-btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>مولد سياسة الخصوصية واتفاقية الاستخدام</h1>
+        <form id="generatorForm">
+            <input id="siteName" placeholder="اسم الموقع" required type="text" />
+            <input id="siteURL" placeholder="رابط الموقع" required type="url" />
+            <input id="email" placeholder="البريد الإلكتروني" required type="email" />
+            <button onclick="generateDocuments()" type="button">توليد المستندات</button>
+        </form>
+
+        <textarea id="policyOutput" placeholder="سيظهر كود سياسة الخصوصية هنا" readonly rows="10"></textarea>
+        <button class="copy-btn" onclick="copyToClipboard('policyOutput')">نسخ سياسة الخصوصية</button>
+
+        <textarea id="termsOutput" placeholder="سيظهر كود اتفاقية الاستخدام هنا" readonly rows="10"></textarea>
+        <button class="copy-btn" onclick="copyToClipboard('termsOutput')">نسخ اتفاقية الاستخدام</button>
+    </div>
+
+    <script>
+        function generateDocuments() {
+            const siteName = document.getElementById('siteName').value;
+            const siteURL = document.getElementById('siteURL').value;
+            const email = document.getElementById('email').value;
+
+            const privacyPolicy = `
+                <h1>سياسة الخصوصية لـ ${siteName}</h1>
+                <p>في ${siteName}، يمكن الوصول إليه من <a href="${siteURL}">${siteURL}</a>، أحد أولوياتنا الرئيسية هو خصوصية زوارنا. تحدد سياسة الخصوصية هذه أنواع المعلومات التي يتم جمعها وتسجيلها من قبل ${siteName} وكيف نستخدمها.</p>
+                <h2>ملفات الدخول</h2>
+                <p>${siteName} يتبع إجراءً قياسيًا لاستخدام ملفات الدخول. تسجل هذه الملفات الزوار عند زيارتهم للمواقع. تشمل المعلومات التي يتم جمعها بواسطة ملفات الدخول عناوين بروتوكول الإنترنت (IP) ونوع المتصفح ومزود خدمة الإنترنت (ISP) والطابع الزمني والتاريخي وصفحات الإحالة/الخروج وربما عدد النقرات.</p>
+                <h2>سياسة الخصوصية لشركاء الإعلانات</h2>
+                <p>يمكنك الرجوع إلى هذه القائمة للعثور على سياسة الخصوصية لكل من شركاء الإعلان لـ ${siteName}.</p>
+                <h2>الموافقة</h2>
+                <p>باستخدام موقعنا، فإنك بذلك توافق على سياسة الخصوصية الخاصة بنا وتوافق على شروطها.</p>
+                <p>إذا كان لديك أي أسئلة أو تحتاج إلى مزيد من المعلومات حول سياسة الخصوصية الخاصة بنا، لا تتردد في الاتصال بنا عبر البريد الإلكتروني على <a href="mailto:${email}">${email}</a>.</p>
+            `;
+            const termsOfService = `
+                <h1>اتفاقية الاستخدام لـ ${siteName}</h1>
+                <p>مرحبًا بك في ${siteName}!</p>
+                <p>تحدد هذه الشروط والأحكام القواعد واللوائح الخاصة باستخدام موقع ${siteName}، الموجود على <a href="${siteURL}">${siteURL}</a>.</p>
+                <h2>قبول الشروط</h2>
+                <p>باستخدام هذا الموقع، نفترض أنك تقبل هذه الشروط والأحكام. لا تستمر في استخدام ${siteName} إذا كنت لا توافق على جميع الشروط والأحكام المذكورة في هذه الصفحة.</p>
+                <h2>ملفات تعريف الارتباط (Cookies)</h2>
+                <p>يستخدم الموقع ملفات تعريف الارتباط لتحسين تجربة المستخدم. باستخدام ${siteName}، فإنك توافق على استخدام ملفات تعريف الارتباط وفقًا لسياسة الخصوصية الخاصة بـ ${siteName}.</p>
+                <h2>الرخصة</h2>
+                <p>ما لم يُذكر خلاف ذلك، فإن ${siteName} و/أو مرخصيها يمتلكون حقوق الملكية الفكرية لجميع المواد على ${siteName}. جميع حقوق الملكية الفكرية محفوظة. يمكنك الوصول إلى هذا من ${siteName} لاستخدامك الشخصي بشرط وجود قيود محددة منصوص عليها في هذه الشروط والأحكام.</p>
+                <p>إذا كان لديك أي أسئلة أو تحتاج إلى مزيد من المعلومات حول اتفاقية الاستخدام الخاصة بنا، لا تتردد في الاتصال بنا عبر البريد الإلكتروني على <a href="mailto:${email}">${email}</a>.</p>
+            `;
+
+            document.getElementById('policyOutput').value = privacyPolicy;
+            document.getElementById('termsOutput').value = termsOfService;
+        }
+
+        function copyToClipboard(elementId) {
+            const text = document.getElementById(elementId);
+            text.select();
+            text.setSelectionRange(0, 99999); // للأجهزة المحمولة
+            document.execCommand('copy');
+            alert('تم نسخ النص!');
+        }
+    </script>
+</body>
+</html>
